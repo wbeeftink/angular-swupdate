@@ -9,16 +9,24 @@ import { first } from "rxjs/operators";
  */
 @Injectable()
 export class CheckForUpdateService {
-  constructor(appRef: ApplicationRef, updates: SwUpdate) {
+  constructor(applicationRef: ApplicationRef, swUpdate: SwUpdate) {
+    if (!swUpdate.isEnabled) return;
+
     // Allow the app to stabilize first, before starting
     // polling for updates with `interval()`.
-    const appIsStable$ = appRef.isStable.pipe(first((isStable) => isStable));
-    const everySixHours$ = interval(6 * 60 * 60 * 1000);
-    const everySixHoursOnceAppIsStable$ = concat(appIsStable$, everySixHours$);
+    const appIsStable$ = applicationRef.isStable.pipe(
+      first((isStable) => isStable),
+    );
 
-    everySixHoursOnceAppIsStable$.subscribe(async () => {
+    // const everySixHours$ = interval(6 * 60 * 60 * 1000);
+    const interval$ = interval(30 * 1000); // s * ms
+
+    // const everySixHoursOnceAppIsStable$ = concat(appIsStable$, everySixHours$);
+    const intervalAfterStable$ = concat(appIsStable$, interval$);
+
+    intervalAfterStable$.subscribe(async () => {
       try {
-        const updateFound = await updates.checkForUpdate();
+        const updateFound = await swUpdate.checkForUpdate();
         console.log(
           updateFound
             ? "A new version is available."

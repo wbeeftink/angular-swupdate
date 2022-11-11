@@ -9,6 +9,8 @@ import { filter } from "rxjs";
 @Injectable()
 export class PromptUpdateService {
   constructor(swUpdate: SwUpdate) {
+    if (!swUpdate.isEnabled) return;
+
     swUpdate.versionUpdates
       .pipe(
         filter(

@@ -7,8 +7,10 @@ import { SwUpdate } from "@angular/service-worker";
  */
 @Injectable()
 export class LogUpdateService {
-  constructor(updates: SwUpdate) {
-    updates.versionUpdates.subscribe((event) => {
+  constructor(swUpdate: SwUpdate) {
+    if (!swUpdate.isEnabled) return;
+
+    swUpdate.versionUpdates.subscribe((event) => {
       switch (event.type) {
         case "VERSION_DETECTED":
           console.log(`Downloading new app version: ${event.version.hash}`);

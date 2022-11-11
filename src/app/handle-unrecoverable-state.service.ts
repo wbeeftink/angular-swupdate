@@ -8,6 +8,8 @@ import { SwUpdate } from "@angular/service-worker";
 @Injectable()
 export class HandleUnrecoverableStateService {
   constructor(updates: SwUpdate) {
+    if (!updates.isEnabled) return;
+
     updates.unrecoverable.subscribe((event) => {
       console.error(
         "An error occurred that we cannot recover from:\n" +
