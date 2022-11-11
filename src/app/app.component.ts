@@ -12,13 +12,14 @@ import { PromptUpdateService } from "./prompt-update.service";
   styleUrls: ["./app.component.css"],
 })
 export class AppComponent {
-  title = "angular-swupdate!";
+  title = "angular-swupdate";
+
   constructor(
     swUpdate: SwUpdate,
     _checkForUpdateService: CheckForUpdateService,
+    _promptUpdateService: PromptUpdateService,
     _handleUnrecoverableStateService: HandleUnrecoverableStateService,
     _logUpdateService: LogUpdateService,
-    _promptUpdateService: PromptUpdateService,
   ) {
     console.log(`Service worker updates enabled: ${swUpdate.isEnabled}`);
   }
