@@ -1,10 +1,12 @@
 import { Component } from "@angular/core";
 import { SwUpdate } from "@angular/service-worker";
 
-import { LogUpdateService } from "./log-update.service.ts.service";
-import { CheckForUpdateService } from "./check-for-update.service";
-import { HandleUnrecoverableStateService } from "./handle-unrecoverable-state.service";
-import { PromptUpdateService } from "./prompt-update.service";
+import {
+  CheckForUpdateService,
+  HandleUnrecoverableStateService,
+  LogUpdateService,
+  PromptUpdateService,
+} from "./services";
 
 @Component({
   selector: "app-root",

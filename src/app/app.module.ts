@@ -4,10 +4,12 @@ import { ServiceWorkerModule } from "@angular/service-worker";
 
 import { AppComponent } from "./app.component";
 import { environment } from "../environments/environment";
-import { LogUpdateService } from "./log-update.service.ts.service";
-import { CheckForUpdateService } from "./check-for-update.service";
-import { HandleUnrecoverableStateService } from "./handle-unrecoverable-state.service";
-import { PromptUpdateService } from "./prompt-update.service";
+import {
+  CheckForUpdateService,
+  HandleUnrecoverableStateService,
+  LogUpdateService,
+  PromptUpdateService,
+} from "./services";
 
 @NgModule({
   declarations: [AppComponent],
