@@ -10,6 +10,7 @@ import {
   LogUpdateService,
   PromptUpdateService,
 } from "./services";
+import { AppRoutingModule } from "./app-routing.module";
 
 @NgModule({
   declarations: [AppComponent],
@@ -21,6 +22,7 @@ import {
       // or after 30 seconds (whichever comes first).
       registrationStrategy: "registerWhenStable:30000",
     }),
+    AppRoutingModule,
   ],
   providers: [
     LogUpdateService,
