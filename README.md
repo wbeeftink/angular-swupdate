@@ -80,9 +80,27 @@ After refreshing, the changed title should be visible:
 
 ![Title](assets/title.png)
 
+## `installMode`
+
+The installMode determines how these resources are initially cached. The
+installMode can be either of two values:
+
+- `prefetch` – Tells the Angular service worker to fetch every single listed resource
+while it's caching the current version of the application. This is
+bandwidth-intensive but ensures resources are available whenever they're
+requested, even if the browser is currently offline.
+- `lazy` – Does not cache any of the resources up front. Instead, the Angular service
+worker only caches resources for which it receives requests. This is an
+on-demand caching mode. Resources that are never requested are not cached. This
+is useful for things like images at different resolutions, so the service worker
+only caches the correct assets for the particular screen and orientation.
+
+Source: https://angular.io/guide/service-worker-config#installmode
+
 ## More information
 
 - [Service worker communication](https://angular.io/guide/service-worker-communications)
 - [Service worker in production](https://angular.io/guide/service-worker-devops)
+- [installMode: Determines how resources are initially cached](https://angular.io/guide/service-worker-config#installmode)
 - [API > @angular/service-worker > SwUpdate](https://angular.io/api/service-worker/SwUpdate)
 - [StackOverflow answer on how to implement SwUpdate](https://stackoverflow.com/a/50969084)
