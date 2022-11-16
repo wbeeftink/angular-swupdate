@@ -1,9 +1,9 @@
 import { ChangeDetectionStrategy, Component } from "@angular/core";
 
 @Component({
-  selector: "app-bar",
-  templateUrl: "./bar.component.html",
-  styleUrls: ["./bar.component.css"],
+  selector: "app-baz",
+  templateUrl: "./baz.component.html",
+  styleUrls: ["./baz.component.css"],
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class BarComponent {}
+export class BazComponent {}
