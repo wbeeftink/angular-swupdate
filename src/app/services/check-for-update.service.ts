@@ -19,7 +19,7 @@ export class CheckForUpdateService {
     );
 
     // const everySixHours$ = interval(6 * 60 * 60 * 1000);
-    const interval$ = interval(30 * 1000); // s * ms
+    const interval$ = interval(10 * 1000); // s * ms
 
     // const everySixHoursOnceAppIsStable$ = concat(appIsStable$, everySixHours$);
     const intervalAfterStable$ = concat(appIsStable$, interval$);

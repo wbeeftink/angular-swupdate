@@ -7,6 +7,7 @@ import {
   LogUpdateService,
   PromptUpdateService,
 } from "./services";
+import { MatSnackBar } from "@angular/material/snack-bar";
 
 @Component({
   selector: "app-root",
@@ -15,15 +16,24 @@ import {
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class AppComponent {
-  title = "angular-swupdate";
+  title = "angular-swupdate 3";
 
   constructor(
+    private matSnackBar: MatSnackBar,
     swUpdate: SwUpdate,
     _checkForUpdateService: CheckForUpdateService,
-    _promptUpdateService: PromptUpdateService,
     _handleUnrecoverableStateService: HandleUnrecoverableStateService,
     _logUpdateService: LogUpdateService,
+    _promptUpdateService: PromptUpdateService,
   ) {
     console.log(`Service worker updates enabled: ${swUpdate.isEnabled}`);
+  }
+
+  showSnackBar(): void {
+    this.matSnackBar
+      .open("👍 This is a snackbar", "Close", {
+        verticalPosition: "top",
+      })
+      .afterDismissed();
   }
 }

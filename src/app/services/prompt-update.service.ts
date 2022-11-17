@@ -1,6 +1,8 @@
 import { Injectable } from "@angular/core";
-import { SwUpdate, VersionReadyEvent } from "@angular/service-worker";
-import { filter } from "rxjs";
+import { SwUpdate } from "@angular/service-worker";
+import { MatSnackBar, MatSnackBarDismiss } from "@angular/material/snack-bar";
+import { Router } from "@angular/router";
+import { filter, Observable, switchMap } from "rxjs";
 
 /**
  * Updating to the latest version
@@ -8,20 +10,32 @@ import { filter } from "rxjs";
  */
 @Injectable()
 export class PromptUpdateService {
-  constructor(swUpdate: SwUpdate) {
+  constructor(
+    swUpdate: SwUpdate,
+    private matSnackBar: MatSnackBar,
+    private router: Router,
+  ) {
     if (!swUpdate.isEnabled) return;
 
     swUpdate.versionUpdates
       .pipe(
-        filter(
-          (event): event is VersionReadyEvent => event.type === "VERSION_READY",
-        ),
+        filter((event) => event.type === "VERSION_READY"),
+        switchMap(() => this.promptUser()),
       )
-      .subscribe(() => {
-        if (confirm("A new version is available, click OK to refresh.")) {
-          // Reload the page to update to the latest version.
-          document.location.reload();
-        }
-      });
+      .subscribe(() => this.reloadApplication());
+  }
+
+  private promptUser(): Observable<MatSnackBarDismiss> {
+    return this.matSnackBar
+      .open("💡 A new version is available, click OK to refresh.", "OK", {
+        verticalPosition: "top",
+      })
+      .afterDismissed();
+  }
+
+  private reloadApplication(): void {
+    this.router.navigate(["/"]).then(() => {
+      document.location.reload();
+    });
   }
 }
