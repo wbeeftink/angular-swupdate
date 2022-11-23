@@ -16,7 +16,7 @@ import { MatSnackBar } from "@angular/material/snack-bar";
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class AppComponent {
-  title = "angular-swupdate 3";
+  title = "angular-swupdate";
 
   constructor(
     private matSnackBar: MatSnackBar,
