@@ -1,5 +1,6 @@
 import { ChangeDetectionStrategy, Component } from "@angular/core";
 import { SwUpdate } from "@angular/service-worker";
+import { MatSnackBar } from "@angular/material/snack-bar";
 
 import {
   CheckForUpdateService,
@@ -7,7 +8,6 @@ import {
   LogUpdateService,
   PromptUpdateService,
 } from "./services";
-import { MatLegacySnackBar as MatSnackBar } from "@angular/material/legacy-snack-bar";
 
 @Component({
   selector: "app-root",
