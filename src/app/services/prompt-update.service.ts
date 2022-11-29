@@ -1,6 +1,6 @@
 import { Injectable } from "@angular/core";
 import { SwUpdate } from "@angular/service-worker";
-import { MatSnackBar, MatSnackBarDismiss } from "@angular/material/snack-bar";
+import { MatLegacySnackBar as MatSnackBar, MatLegacySnackBarDismiss as MatSnackBarDismiss } from "@angular/material/legacy-snack-bar";
 import { Router } from "@angular/router";
 import { filter, Observable, switchMap } from "rxjs";
 
