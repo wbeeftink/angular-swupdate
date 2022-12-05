@@ -241,9 +241,15 @@
     />
   </svg>
 
-  <button mat-flat-button color="accent" (click)="showSnackBar()">
-    Show snackbar
-  </button>
+  <div class="buttons">
+    <button mat-flat-button color="accent" (click)="showSnackBar()">
+      Show snackbar
+    </button>
+
+    <button mat-flat-button color="accent" (click)="showCommitMessage()">
+      Get random commit message
+    </button>
+  </div>
 
   <router-outlet></router-outlet>
 </div>

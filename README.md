@@ -9,7 +9,7 @@ Run `npm install` to install all dependencies.
 ## Development server
 
 Run `npm run start` for a dev server. Navigate to `http://localhost:4200/`. The
-application will automatically reload if you change any of the source files. 
+application will automatically reload if you change any of the source files.
 
 **Note:** Service workers are disabled for the dev server.
 
@@ -20,8 +20,8 @@ the `dist/` directory.
 
 ## HTTP Server
 
-Run `npm run http-server` to start a simple http server. Navigate to
-`http://localhost:8080/`. You can 
+Run `npm run http-server` to start a simple http server. Navigate
+to `http://localhost:8080/`.
 
 ## Testing the service worker
 
@@ -86,14 +86,14 @@ The `installMode` determines how these resources are initially cached.
 The `installMode` can be either of two values:
 
 - `prefetch` – Tells the Angular service worker to fetch every single listed resource
-while it's caching the current version of the application. This is
-bandwidth-intensive but ensures resources are available whenever they're
-requested, even if the browser is currently offline.
+  while it's caching the current version of the application. This is
+  bandwidth-intensive but ensures resources are available whenever they're
+  requested, even if the browser is currently offline.
 - `lazy` – Does not cache any of the resources up front. Instead, the Angular service
-worker only caches resources for which it receives requests. This is an
-on-demand caching mode. Resources that are never requested are not cached. This
-is useful for things like images at different resolutions, so the service worker
-only caches the correct assets for the particular screen and orientation.
+  worker only caches resources for which it receives requests. This is an
+  on-demand caching mode. Resources that are never requested are not cached. This
+  is useful for things like images at different resolutions, so the service worker
+  only caches the correct assets for the particular screen and orientation.
 
 Source: https://angular.io/guide/service-worker-config#installmode
 
@@ -116,6 +116,7 @@ Source: https://angular.io/guide/service-worker-config#updatemode
 ## Troubleshooting
 
 ### Schematic picks incompatible version
+
 Include the version that matches the version of Angular:
 
 ```sh
@@ -123,6 +124,7 @@ ng add @angular/pwa@13
 ```
 
 ### Schematic is unable to find project directory
+
 If you're using TypeScript path mapping, you might get this error:
 
 ```
@@ -135,10 +137,10 @@ revert the change after running the schematic.
 
 ```ts
 // Before
-import { AppModule } from '@my-app/app.module';
+import { AppModule } from "@my-app/app.module";
 
 // After
-import { AppModule } from './app/app.module';
+import { AppModule } from "./app/app.module";
 ```
 
 Issue: https://github.com/angular/angular-cli/issues/11499

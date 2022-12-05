@@ -7,7 +7,9 @@ import { first } from "rxjs/operators";
  * Checking for updates
  * https://angular.io/guide/service-worker-communications#checking-for-updates
  */
-@Injectable()
+@Injectable({
+  providedIn: "root",
+})
 export class CheckForUpdateService {
   constructor(applicationRef: ApplicationRef, swUpdate: SwUpdate) {
     if (!swUpdate.isEnabled) return;

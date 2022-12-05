@@ -5,7 +5,9 @@ import { SwUpdate } from "@angular/service-worker";
  * Version updates
  * https://angular.io/guide/service-worker-communications#version-updates
  */
-@Injectable()
+@Injectable({
+  providedIn: "root",
+})
 export class LogUpdateService {
   constructor(swUpdate: SwUpdate) {
     if (!swUpdate.isEnabled) return;

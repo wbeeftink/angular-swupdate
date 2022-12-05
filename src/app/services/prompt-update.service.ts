@@ -8,7 +8,9 @@ import { filter, Observable, switchMap } from "rxjs";
  * Updating to the latest version
  * https://angular.io/guide/service-worker-communications#updating-to-the-latest-version
  */
-@Injectable()
+@Injectable({
+  providedIn: "root",
+})
 export class PromptUpdateService {
   constructor(
     swUpdate: SwUpdate,

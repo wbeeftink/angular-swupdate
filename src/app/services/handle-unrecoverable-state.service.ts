@@ -5,7 +5,9 @@ import { SwUpdate } from "@angular/service-worker";
  * Handling an unrecoverable state
  * https://angular.io/guide/service-worker-communications#handling-an-unrecoverable-state
  */
-@Injectable()
+@Injectable({
+  providedIn: "root",
+})
 export class HandleUnrecoverableStateService {
   constructor(updates: SwUpdate) {
     if (!updates.isEnabled) return;
